@@ -1,8 +1,8 @@
 from PIL import Image
 
 def main():
-    # 1. 동일 폴더 내의 이미지 파일 열기
-    img = Image.open("skull.png").convert("RGBA")
+    # 1. data 폴더에 있는 skull.png 이미지 열기
+    img = Image.open("data/skull.png").convert("RGBA")
     
     # 2. 이미지 크기(너비, 높이) 가져오기
     width, height = img.size
@@ -21,9 +21,10 @@ def main():
             row.append([r, g, b, a])  # RGBA
         pixel_array.append(row)
     
-    # 5. source.txt 파일에 저장
-    with open("source.txt", "w", encoding="utf-8") as f:
-        for row in pixel_array:
-            for pixel in row:
-                f.write(f"{pixel[0]} {pixel[1]} {pixel[2]} {pixel[3]}\n")
+    # 5. data/source.txt 파일에 저장
+    with open("data/source.txt", "w", encoding="utf-8") as out:
+        out.write(str(pixel_array))
 
+if __name__ == "__main__":
+    main()
+    
