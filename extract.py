@@ -7,8 +7,7 @@ def main():
     # 2. 이미지 크기(너비, 높이) 가져오기
     width, height = img.size
     
-    # 3. 픽셀 데이터 읽어오기 (getdata() 사용)
-    #    -> (r, g, b, a) 형태로 너비*높이 만큼 생김
+    # 3. 픽셀 데이터 읽어오기 (r, g, b, a) 형태로 너비*높이 만큼 생김
     pixels = list(img.getdata())
     
     # 4. 2차원 배열로 변환
@@ -27,4 +26,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-    

@@ -1,7 +1,7 @@
 function setup() {
     s = 10; // 픽셀 사이즈(조절 가능)
     createCanvas(64*s+s/2, 64*s+s/2);
-    background(255);
+    background(0); // 이게 더 이쁘다?
     noStroke();
   }
 
