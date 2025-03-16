@@ -1,3 +1,6 @@
+// 20224522 주호진 2025-03-16
+// https://github.com/joohojin/MOJAK 에서 제작 과정과 비하인드를 확인하실 수 있습니다.
+
 function setup() {
     createCanvas(1000, 1000);
     background(0);
@@ -6,7 +9,6 @@ function setup() {
 
 
 function draw() {
-
         // 무지개! 같은 선을 만듭니다!
     // 우선 무지개 색을 정의합니다.
     red = color(238, 30, 50);
