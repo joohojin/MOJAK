@@ -6,14 +6,7 @@ function setup() {
 
 
 function draw() {
-    fill(255, 255, 255);
-    beginShape();
-    vertex(0, 486);
-    vertex(427, 374);
-    vertex(427, 381);
-    vertex(0, 495);
-    endShape(CLOSE);
-
+   
     let n = 255;
     let lx1 = 500;
     let ly1 = 230;
@@ -57,23 +50,35 @@ function draw() {
     let iy3 = 410;
 
 
-    // 우선 ix1과 ix2 사이의 3분의 1 지점을 계산합니다.
-    let ix1_2 = ix1 + (ix2 - ix1) / 3;
-    let iy1_2 = iy1 + (iy2 - iy1) / 3;
+    // 우선 ix1과 ix2 사이의 2분의 1 지점을 계산합니다.
+    let ix1_2 = 500;
+    let iy1_2 = iy1 + (iy2 - iy1) / 2;
 
-    // ix1과 ix3 사이의 3분의 1 지점을 계산합니다.
-    let ix1_3 = ix1 + (ix3 - ix1) / 3;
-    let iy1_3 = iy1 + (iy3 - iy1) / 3;
+    // ix1과 ix3 사이의 2분의 1 지점을 계산합니다.
+    let ix1_3 = 500;
+    let iy1_3 = iy1 + (iy3 - iy1) / 2;
 
 
     for (let i = 0; i < n; i++) {
-        let x1 = ix2 - ((ix2 - ix1_2) / n) * i;
-        let y1 = iy2 - ((iy2 - iy1_2) / n) * i;
-        let x2 = ix3 - ((ix3 - ix1_3) / n) * i;
-        let y2 = iy3 - ((iy3 - iy1_3) / n) * i;
-
-        fill(0+i, 0+i, 0+i, 1);
-        triangle(ix1, iy1, x1, y1, x2, y2);
+        let x1 = ix1_2-((ix1_2-ix1)/n)*i;
+        let y1 = iy1_2-((iy1_2-iy1)/n)*i;
+        let x2 = ix1_3-((ix1_3-ix1)/n)*i;
+        let y2 = iy1_3-((iy1_3-iy1)/n)*i;
+        //여기서 x1과 x2의 값이 일정 수치 이상이 되면 삼각형이 그려지지 않아야 하는데 어째서! 
+        if (x1 > 427 & x2 > 427) {
+            fill(0+i, 0+i, 0+i, 255);
+            triangle(ix1, iy1, x1, y1, x2, y2);
+        }
     }
-    
+
+         
+    fill(255, 255, 255);
+    beginShape();
+    vertex(0, 486);
+    vertex(417, 374);
+    vertex(413, 381);
+    vertex(0, 495);
+    endShape(CLOSE);
+
+
 }
