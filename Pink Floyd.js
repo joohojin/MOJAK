@@ -41,7 +41,7 @@ function draw() {
  
     }
 
-
+    // 삼각형 만들기 위한 재료?
     let ix1 = 390;
     let iy1 = 385;
     let ix2 = 560;
@@ -67,7 +67,7 @@ function draw() {
     vertex(0, 495);
     endShape(CLOSE);
 
-    // 하얀 선의 x가 각각 417, 413인 좌표부터 ix1_2, iy1_2, ix1_3, iy1_3까지 그립니다. 젭알
+    // 하얀 선의 x가 각각 417, 413인 좌표부터 ix1_2, iy1_2, ix1_3, iy1_3까지 그립니다. 젭알!
     for (let i = 0; i < n; i++) {
         let x1 = ix1_2-((ix1_2-417)/n)*i;
         let y1 = iy1_2-((iy1_2-374)/n)*i;
@@ -79,6 +79,44 @@ function draw() {
         vertex(x2, y2);
         vertex(417, 374);
         vertex(413, 381);
+        endShape(CLOSE);
+    }
+
+
+    // 무지개! 같은 선을 만듭니다!
+    // 우선 무지개 색을 정의합니다.
+    red = color(238, 30, 50);
+    orange = color(241, 99, 35);
+    yellow = color(254, 241, 1);
+    green = color(34, 169, 81);
+    indigo = color(33, 168, 198);
+    violet = color(114, 92, 145);
+
+    // 6번 반복하며 y좌표를 10씩 증가시키고, x좌표도 6씩 증가시킵니다.
+    for (let i = 0; i < 6; i++) {
+        if (i == 0) {
+            fill(red);
+        } else if (i == 1) {
+            fill(orange);
+        } else if (i == 2) {
+            fill(yellow);
+        } else if (i == 3) {
+            fill(green);
+        } else if (i == 4) {
+            fill(indigo);
+        } else if (i == 5) {
+            fill(violet);
+        }
+        beginShape();
+        vertex(1000, 486+(10*i));
+        vertex(570+(6*i), 350+(10*i));
+        vertex(578+(6*i), 365+(10*i));
+        if (i == 5) { //그냥 하면 끝이 다 안 맞아서 이렇게 처리했습니다.
+            vertex(1000, 495+(10*i));
+        }
+        else {
+            vertex(1000, 486+(10*(i+1)));
+        }
         endShape(CLOSE);
     }
 }
