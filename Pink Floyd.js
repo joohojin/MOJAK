@@ -6,14 +6,44 @@ function setup() {
 
 
 function draw() {
-    fill(255, 255, 255);
-    beginShape();
-    vertex(0, 486);
-    vertex(427, 374);
-    vertex(427, 381);
-    vertex(0, 495);
-    endShape(CLOSE);
 
+        // 무지개! 같은 선을 만듭니다!
+    // 우선 무지개 색을 정의합니다.
+    red = color(238, 30, 50);
+    orange = color(241, 99, 35);
+    yellow = color(254, 241, 1);
+    green = color(34, 169, 81);
+    indigo = color(33, 168, 198);
+    violet = color(114, 92, 145);
+
+    // 6번 반복하며 y좌표를 10씩 증가시키고, x좌표도 6씩 증가시킵니다.
+    for (let i = 0; i < 6; i++) {
+        if (i == 0) {
+            fill(red);
+        } else if (i == 1) {
+            fill(orange);
+        } else if (i == 2) {
+            fill(yellow);
+        } else if (i == 3) {
+            fill(green);
+        } else if (i == 4) {
+            fill(indigo);
+        } else if (i == 5) {
+            fill(violet);
+        }
+        beginShape();
+        vertex(1000, 436+(17.5*i));
+        vertex(565+(6*i), 350+(10*i)); // 어차피 가리니까
+        if (i == 5) { //그냥 하면 끝이 다 안 맞아서 이렇게 처리했습니다.
+            vertex(575+(6*i), 365+(10*i-2)); // 이게 더 예쁘다
+        }
+        else {
+            vertex(575+(6*i), 365+(10*i)); // 여기는 그대로로
+        }
+        vertex(1000, 436+(17.5*(i+1)));
+        endShape(CLOSE);
+    }
+   
     let n = 255;
     let lx1 = 500;
     let ly1 = 230;
@@ -30,7 +60,7 @@ function draw() {
     let fy3 = 520;
 
    // 삼각형에 색을 흰색으로 채우고, 검은색 삼각형이 가운데에 위치하도록 그래디언트를 설정합니다. 마참내!
-    fill(255, 255, 255);
+    fill(196, 215, 224); // 색 맞춤
     triangle(lx1, ly1, lx2, ly2, lx3, ly3);
 
     fill(0, 0, 0);
@@ -43,12 +73,12 @@ function draw() {
         let y2 = ly2-((ly2-fy2)/n)*i;
         let x3 = lx3-((lx3-fx3)/n)*i;
         let y3 = ly3-((ly3-fy3)/n)*i;
-        fill(255-i, 255-i, 255-i, 255);
+        fill(196-i, 215-i, 224-i, 255);
         triangle(x1, y1, x2, y2, x3, y3);
  
     }
 
-
+    // 삼각형 만들기 위한 재료?
     let ix1 = 390;
     let iy1 = 385;
     let ix2 = 560;
@@ -57,23 +87,39 @@ function draw() {
     let iy3 = 410;
 
 
-    // 우선 ix1과 ix2 사이의 3분의 1 지점을 계산합니다.
-    let ix1_2 = ix1 + (ix2 - ix1) / 3;
-    let iy1_2 = iy1 + (iy2 - iy1) / 3;
+    // 우선 ix1과 ix2 사이의 2분의 1 지점을 계산합니다.
+    let ix1_2 = 500;
+    let iy1_2 = iy1 + (iy2 - iy1) / 2;
 
-    // ix1과 ix3 사이의 3분의 1 지점을 계산합니다.
-    let ix1_3 = ix1 + (ix3 - ix1) / 3;
-    let iy1_3 = iy1 + (iy3 - iy1) / 3;
+    // ix1과 ix3 사이의 2분의 1 지점을 계산합니다.
+    let ix1_3 = 500;
+    let iy1_3 = iy1 + (iy3 - iy1) / 2;
 
+    // 하얀 선을 그립니다.
+    fill(255, 255, 255);
+    beginShape();
+    vertex(0, 486);
+    vertex(417, 374);
+    vertex(413, 381);
+    vertex(0, 495);
+    endShape(CLOSE);
 
+    // 하얀 선의 x가 각각 417, 413인 좌표부터 ix1_2, iy1_2, ix1_3, iy1_3까지 그립니다. 젭알!
     for (let i = 0; i < n; i++) {
-        let x1 = ix2 - ((ix2 - ix1_2) / n) * i;
-        let y1 = iy2 - ((iy2 - iy1_2) / n) * i;
-        let x2 = ix3 - ((ix3 - ix1_3) / n) * i;
-        let y2 = iy3 - ((iy3 - iy1_3) / n) * i;
-
-        fill(0+i, 0+i, 0+i, 1);
-        triangle(ix1, iy1, x1, y1, x2, y2);
+        let x1 = ix1_2-((ix1_2-417)/n)*i+10;
+        let y1 = iy1_2-((iy1_2-374)/n)*i;
+        let x2 = ix1_3-((ix1_3-413)/n)*i;
+        let y2 = iy1_3-((iy1_3-381)/n)*i;
+        // fill(196, 215, 224); 색으로 역방향 그래디언트룰 줍니다.
+        fill(180-(224-i), 180-(200-i), 180-(196-i), 255);
+        beginShape();
+        vertex(417, 374); // 여기가 꼬여있었어!!!!!!!
+        vertex(x1, y1);
+        vertex(x2, y2);
+        vertex(413, 381);
+        endShape(CLOSE);
     }
-    
+
+
+
 }
