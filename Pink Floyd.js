@@ -58,20 +58,7 @@ function draw() {
     let ix1_3 = 500;
     let iy1_3 = iy1 + (iy3 - iy1) / 2;
 
-
-    for (let i = 0; i < n; i++) {
-        let x1 = ix1_2-((ix1_2-ix1)/n)*i;
-        let y1 = iy1_2-((iy1_2-iy1)/n)*i;
-        let x2 = ix1_3-((ix1_3-ix1)/n)*i;
-        let y2 = iy1_3-((iy1_3-iy1)/n)*i;
-        //여기서 x1과 x2의 값이 일정 수치 이상이 되면 삼각형이 그려지지 않아야 하는데 어째서! 
-        if (x1 > 427 & x2 > 427) {
-            fill(0+i, 0+i, 0+i, 255);
-            triangle(ix1, iy1, x1, y1, x2, y2);
-        }
-    }
-
-         
+    // 하얀 선을 그립니다.
     fill(255, 255, 255);
     beginShape();
     vertex(0, 486);
@@ -80,5 +67,18 @@ function draw() {
     vertex(0, 495);
     endShape(CLOSE);
 
-
+    // 하얀 선의 x가 각각 417, 413인 좌표부터 ix1_2, iy1_2, ix1_3, iy1_3까지 그립니다. 젭알
+    for (let i = 0; i < n; i++) {
+        let x1 = ix1_2-((ix1_2-417)/n)*i;
+        let y1 = iy1_2-((iy1_2-374)/n)*i;
+        let x2 = ix1_3-((ix1_3-413)/n)*i;
+        let y2 = iy1_3-((iy1_3-381)/n)*i;
+        fill(0+i, 0+i, 0+i, 255);
+        beginShape();
+        vertex(x1, y1);
+        vertex(x2, y2);
+        vertex(417, 374);
+        vertex(413, 381);
+        endShape(CLOSE);
+    }
 }
