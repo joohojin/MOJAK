@@ -60,7 +60,7 @@ function draw() {
     let fy3 = 520;
 
    // 삼각형에 색을 흰색으로 채우고, 검은색 삼각형이 가운데에 위치하도록 그래디언트를 설정합니다. 마참내!
-    fill(255, 255, 255);
+    fill(196, 215, 224); // 색 맞춤
     triangle(lx1, ly1, lx2, ly2, lx3, ly3);
 
     fill(0, 0, 0);
@@ -73,7 +73,7 @@ function draw() {
         let y2 = ly2-((ly2-fy2)/n)*i;
         let x3 = lx3-((lx3-fx3)/n)*i;
         let y3 = ly3-((ly3-fy3)/n)*i;
-        fill(255-i, 255-i, 255-i, 255);
+        fill(196-i, 215-i, 224-i, 255);
         triangle(x1, y1, x2, y2, x3, y3);
  
     }
@@ -106,15 +106,16 @@ function draw() {
 
     // 하얀 선의 x가 각각 417, 413인 좌표부터 ix1_2, iy1_2, ix1_3, iy1_3까지 그립니다. 젭알!
     for (let i = 0; i < n; i++) {
-        let x1 = ix1_2-((ix1_2-417)/n)*i;
+        let x1 = ix1_2-((ix1_2-417)/n)*i+10;
         let y1 = iy1_2-((iy1_2-374)/n)*i;
         let x2 = ix1_3-((ix1_3-413)/n)*i;
         let y2 = iy1_3-((iy1_3-381)/n)*i;
-        fill(0+i, 0+i, 0+i, 255);
+        // fill(196, 215, 224); 색으로 역방향 그래디언트룰 줍니다.
+        fill(180-(224-i), 180-(200-i), 180-(196-i), 255);
         beginShape();
+        vertex(417, 374); // 여기가 꼬여있었어!!!!!!!
         vertex(x1, y1);
         vertex(x2, y2);
-        vertex(417, 374);
         vertex(413, 381);
         endShape(CLOSE);
     }
