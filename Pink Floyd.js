@@ -6,6 +6,43 @@ function setup() {
 
 
 function draw() {
+
+        // 무지개! 같은 선을 만듭니다!
+    // 우선 무지개 색을 정의합니다.
+    red = color(238, 30, 50);
+    orange = color(241, 99, 35);
+    yellow = color(254, 241, 1);
+    green = color(34, 169, 81);
+    indigo = color(33, 168, 198);
+    violet = color(114, 92, 145);
+
+    // 6번 반복하며 y좌표를 10씩 증가시키고, x좌표도 6씩 증가시킵니다.
+    for (let i = 0; i < 6; i++) {
+        if (i == 0) {
+            fill(red);
+        } else if (i == 1) {
+            fill(orange);
+        } else if (i == 2) {
+            fill(yellow);
+        } else if (i == 3) {
+            fill(green);
+        } else if (i == 4) {
+            fill(indigo);
+        } else if (i == 5) {
+            fill(violet);
+        }
+        beginShape();
+        vertex(1000, 486+(10*i));
+        vertex(565+(6*i), 350+(10*i));
+        vertex(575+(6*i), 365+(10*i));
+        if (i == 5) { //그냥 하면 끝이 다 안 맞아서 이렇게 처리했습니다.
+            vertex(1000, 495+(10*i));
+        }
+        else {
+            vertex(1000, 486+(10*(i+1)));
+        }
+        endShape(CLOSE);
+    }
    
     let n = 255;
     let lx1 = 500;
@@ -83,40 +120,5 @@ function draw() {
     }
 
 
-    // 무지개! 같은 선을 만듭니다!
-    // 우선 무지개 색을 정의합니다.
-    red = color(238, 30, 50);
-    orange = color(241, 99, 35);
-    yellow = color(254, 241, 1);
-    green = color(34, 169, 81);
-    indigo = color(33, 168, 198);
-    violet = color(114, 92, 145);
 
-    // 6번 반복하며 y좌표를 10씩 증가시키고, x좌표도 6씩 증가시킵니다.
-    for (let i = 0; i < 6; i++) {
-        if (i == 0) {
-            fill(red);
-        } else if (i == 1) {
-            fill(orange);
-        } else if (i == 2) {
-            fill(yellow);
-        } else if (i == 3) {
-            fill(green);
-        } else if (i == 4) {
-            fill(indigo);
-        } else if (i == 5) {
-            fill(violet);
-        }
-        beginShape();
-        vertex(1000, 486+(10*i));
-        vertex(570+(6*i), 350+(10*i));
-        vertex(578+(6*i), 365+(10*i));
-        if (i == 5) { //그냥 하면 끝이 다 안 맞아서 이렇게 처리했습니다.
-            vertex(1000, 495+(10*i));
-        }
-        else {
-            vertex(1000, 486+(10*(i+1)));
-        }
-        endShape(CLOSE);
-    }
 }
